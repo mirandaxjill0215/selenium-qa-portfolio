@@ -5,7 +5,6 @@ import time
 
 def test_sort_price_low_to_high():
     driver = get_driver()
-    driver.maximize_window()
 
     login_page = LoginPage(driver)
     login_page.load()
