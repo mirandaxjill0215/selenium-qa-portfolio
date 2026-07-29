@@ -1,9 +1,9 @@
-from selenium import webdriver
+from driver_factory import get_driver
 from pages.login_page import LoginPage
 import time
 
 def test_valid_login():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     login_page = LoginPage(driver)
     login_page.load()
     login_page.login("standard_user", "secret_sauce")
@@ -15,7 +15,7 @@ def test_valid_login():
 
 
 def test_invalid_login():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     login_page = LoginPage(driver)
     login_page.load()
     login_page.login("wrong_user", "wrong_password")
@@ -27,7 +27,7 @@ def test_invalid_login():
 
 
 def test_empty_fields_login():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     login_page = LoginPage(driver)
     login_page.load()
     login_page.login("", "")
@@ -39,7 +39,7 @@ def test_empty_fields_login():
 
 
 def test_locked_out_user():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     login_page = LoginPage(driver)
     login_page.load()
     login_page.login("locked_out_user", "secret_sauce")

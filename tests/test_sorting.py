@@ -1,10 +1,10 @@
-from selenium import webdriver
+from driver_factory import get_driver
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 import time
 
 def test_sort_price_low_to_high():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     driver.maximize_window()
 
     login_page = LoginPage(driver)

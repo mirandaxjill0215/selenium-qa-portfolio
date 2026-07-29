@@ -1,9 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from driver_factory import get_driver
 import time
 
 def test_homepage_title():
-    driver = webdriver.Chrome()
+    driver = get_driver()
     driver.get("https://www.saucedemo.com")
 
     assert "Swag Labs" in driver.title
