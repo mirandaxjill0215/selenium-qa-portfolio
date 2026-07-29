@@ -18,9 +18,6 @@ def test_add_item_to_cart():
     inventory_page.add_item_to_cart("sauce-labs-backpack")
 
     time.sleep(1)
-    print("HAS REMOVE BUTTON:", "remove-sauce-labs-backpack" in driver.page_source)
-    print("HAS BADGE CLASS:", "shopping_cart_badge" in driver.page_source)
-
     assert inventory_page.get_cart_count() == "1"
 
     inventory_page.go_to_cart()
