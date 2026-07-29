@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 
 class InventoryPage:
     def __init__(self, driver):
@@ -14,3 +15,11 @@ class InventoryPage:
 
     def go_to_cart(self):
         self.driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+
+    def sort_by(self, option_value):
+        dropdown = Select(self.driver.find_element(By.CLASS_NAME, "product_sort_container"))
+        dropdown.select_by_value(option_value)
+
+    def get_all_prices(self):
+        price_elements = self.driver.find_elements(By.CLASS_NAME, "inventory_item_price")
+        return [float(p.text.replace("$", "")) for p in price_elements]

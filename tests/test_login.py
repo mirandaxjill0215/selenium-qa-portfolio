@@ -36,3 +36,14 @@ def test_empty_fields_login():
     assert "Username is required" in login_page.get_error_message()
 
     driver.quit()
+
+def test_locked_out_user():
+    driver = webdriver.Chrome()
+    login_page = LoginPage(driver)
+    login_page.load()
+    login_page.login("locked_out_user", "secret_sauce")
+
+    time.sleep(1)
+    assert "Sorry, this user has been locked out" in login_page.get_error_message()
+
+    driver.quit()
